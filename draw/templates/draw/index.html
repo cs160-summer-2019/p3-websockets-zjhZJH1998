@@ -73,11 +73,13 @@
         'wss://p3-websockets-zjhzjh1998-841899579420604.codeanyapp.com/ws/draw');
   socket.onopen=function(){}
   socket.onmessage = function(Sam) {
+    if(true){
 	 var sam=JSON.parse(Sam.data);
     context.moveTo(sam.x1, sam.y1);
           context.lineTo(sam.x2, sam.y2);
           context.lineWidth = 1;
           context.stroke();
+  }
     
 };
 
