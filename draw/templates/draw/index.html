@@ -22,14 +22,79 @@
 
     // setting up the canvas and one paper tool
     var canvas = document.getElementById('myCanvas');
+    var context = canvas.getContext('2d');
+    var startx;
+    var starty;
+    var paintingStauts = false;
     paper.setup(canvas);
     var tool = new paper.Tool();
+        //MouseDown and MouseMove and MouseUp is used to draw the line TiancaishaonianHWK
+        tool.onMouseDown = function(event)
+        {
+          paintingStauts = true;
+          startx = event.point.x
+          starty = event.point.y
+        }
+        tool.onMouseMove = function(event)
+        {
+          if(paintingStauts)
+          {
+          point = event.point;
+          context.moveTo(startx, starty);
+          context.lineTo(point.x, point.y);
+          context.lineWidth = 1;
+          context.stroke();
+            var abc={
+               status:paintingStauts,
+              x1:startx,
+              y1:starty,
+              x2:point.x,
+              y2:point.y
+            };
+          var a=JSON.stringify(abc)
+          socket.send(a);
+          
+          startx = point.x
+          starty = point.y
+          }
+         }
+        tool.onMouseUp = function(event)
+        {
+          paintingStauts = false;
+          
+        }
+
 
     // getting the URL (you may want to use for Exercise 3)
     var url = window.location.href;
 
-    // var socket = new WebSocket(
-    //     'wss://<your url here>/ws/draw');
+
+    var socket = new WebSocket(
+        'wss://p3-websockets-zjhzjh1998-841899579420604.codeanyapp.com/ws/draw');
+  socket.onopen=function(){}
+  socket.onmessage = function(Sam) {
+	 var sam=JSON.parse(Sam.data);
+    context.moveTo(sam.x1, sam.y1);
+          context.lineTo(sam.x2, sam.y2);
+          context.lineWidth = 1;
+          context.stroke();
+    
+};
+
+// use when sending a message to the server
+// to be broadcasted to all clients, please add a delay
+
+  
+
+
+
+// use when sending a message to the server
+// to be broadcasted to all clients, please add a delay
+
+// notify console if socket closes unexpectedly
+socket.onclose = function(e) {
+    console.error('Chat socket closed unexpectedly');
+};
 
 
 </script>
