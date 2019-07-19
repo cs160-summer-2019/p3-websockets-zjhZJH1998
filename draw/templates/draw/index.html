@@ -19,12 +19,26 @@
     <canvas id="myCanvas" width="750px" height="750px"></canvas>
 </body>
 <script>
+  function color16(){//十六进制颜色随机
+			var r = Math.floor(Math.random()*256);
+			var g = Math.floor(Math.random()*256);
+			var b = Math.floor(Math.random()*256);
+			return `rgb(${r},${g},${b})`;
+		}
+    
 
     // setting up the canvas and one paper tool
+  
     var canvas = document.getElementById('myCanvas');
     var context = canvas.getContext('2d');
     var startx;
     var starty;
+ 
+    var yrColor=color16();
+  context.strokeStyle=yrColor;
+  
+//   var yrColor=color16();
+//   context.strokeStyle=yrColor;
     var paintingStauts = false;
     paper.setup(canvas);
     var tool = new paper.Tool();
@@ -39,13 +53,15 @@
         {
           if(paintingStauts)
           {
+            context.beginPath();
           point = event.point;
           context.moveTo(startx, starty);
           context.lineTo(point.x, point.y);
           context.lineWidth = 1;
+            
           context.stroke();
             var abc={
-               status:paintingStauts,
+               color:yrColor,
               x1:startx,
               y1:starty,
               x2:point.x,
@@ -75,9 +91,11 @@
   socket.onmessage = function(Sam) {
     if(true){
 	 var sam=JSON.parse(Sam.data);
+      context.beginPath();
     context.moveTo(sam.x1, sam.y1);
           context.lineTo(sam.x2, sam.y2);
           context.lineWidth = 1;
+      context.strokeStyle=sam.color;
           context.stroke();
   }
     
@@ -97,7 +115,47 @@
 socket.onclose = function(e) {
     console.error('Chat socket closed unexpectedly');
 };
+  
+  
+//   var currhandle=0;//判断操作是否完成
+    if(window.DeviceMotionEvent){
+        var speed = 5;  
+        var x = y = z = lastX = lastY = lastZ = 0;  
+        window.addEventListener('devicemotion', function(){  
+            var acceleration =event.accelerationIncludingGravity;  
+            x = acceleration.x;  
+            y = acceleration.y;  
+            z = acceleration.z;
+            if(Math.abs(x-lastX) > speed || Math.abs(y-lastY) > speed || Math.abs(z-lastZ) > speed) {  
+//             	if(currhandle==0){
+            		//setbegin();//摇一摇事件触发后执行操作
+//             		currhandle=0;
+                context.clearRect(0,0,canvas.width,canvas.height);  
+//             	}	
+            }  
+            lastX = x;  
+            lastY = y;  
+            lastZ = z;
+        }, false);  
+    }else{
+    	alert("您的设备不支持重力感应事件！");
+    }
+  window.addEventListener('deviceorientation',function(event){
+    if(event.gamma>30){
+yrColor=color16();
+      context.strokeStyle=yrColor;
+    }
+  });
+  
 
+
+
+
+
+
+    
+    
+   
 
 </script>
 </html>
