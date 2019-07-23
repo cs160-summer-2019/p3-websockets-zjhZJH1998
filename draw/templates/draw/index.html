@@ -89,7 +89,7 @@
         'wss://p3-websockets-zjhzjh1998-841899579420604.codeanyapp.com/ws/draw');
   socket.onopen=function(){}
   socket.onmessage = function(Sam) {
-    if(true){
+    if(url == 'http://p3-websockets-zjhzjh1998-841899579420604.codeanyapp.com/draw/?type=large'){
 	 var sam=JSON.parse(Sam.data);
       context.beginPath();
     context.moveTo(sam.x1, sam.y1);
