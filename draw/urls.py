@@ -6,8 +6,9 @@ from . import views
 urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^(?P<room_name>[^/]+)/$', views.room, name='room'), 
-  url(r'^compose$', views.compose, name='compose'),
+  
     url(r'^create$', views.create, name='create'),
-   
+    url(r'^composeMusic$', views.composeMusic, name='composeMusic'),
+  url(r'^play$', views.play, name='play'),
 ]
 

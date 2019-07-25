@@ -9,9 +9,11 @@ def room(request, room_name):
     return render(request, 'draw/room.html', {
         'room_name_json': mark_safe(json.dumps(room_name))
     })  
-def compose(request):
-    return render(request, 'draw/compose.html', {})
+def composeMusic(request):
+    return render(request, 'draw/composeMusic.html', {})
 def create(request):
     return render(request, 'draw/create.html', {})
+def play(request):
+    return render(request, 'draw/play.html', {})
 
 

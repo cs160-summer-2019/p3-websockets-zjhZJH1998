@@ -11,7 +11,7 @@ var S = {
     if (i !== -1) {
       S.UI.simulate(decodeURI(action).substring(i + 3));
     } else {
-      S.UI.simulate('#time|Welcome|Which?|#rectangle|Compose|#rectangle|Play|#rectangle|Score|#rectangle|Sing|Choose!||');
+      S.UI.simulate('#time|Welcome|Which?|#rectangle|Score|#rectangle|Play|#rectangle|Lyric|#rectangle|Sing|Choose!||');
     }
 
     S.Drawing.loop(function () {

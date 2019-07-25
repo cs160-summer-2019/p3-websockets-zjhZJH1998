@@ -1,0 +1,127 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+<meta charset="UTF-8">
+<title>Mysong</title>
+
+   <link rel="stylesheet" href="{% static 'draw/vendor/bootstrap/css/style2.css' %}">
+   <link rel="stylesheet" type="text/css" href="{% static 'draw/vendor/bootstrap/css/bootstrap.min.css' %}">
+   <script type="text/javascript" src="{% static 'draw/vendor/jquery/jquery-3.3.1.min.js' %}"></script>
+  <link rel="stylesheet" href="{% static 'draw/vendor/bootstrap/css/easydialog.css' %}">
+
+
+</head>
+
+<body>
+ <div class="controls">
+	<label class="controls__label">little game!</label>
+	<input class="controls__slider" data-slider type="range" min="100" max="500" step="1" value="300" />
+</div>
+ <div id="imgBox" style="display:none">
+  <img src="{% static 'draw/lyric.png' %}" alt="" />
+</div>
+   
+  
+
+<div class="row">
+  <div class="col-md-4">
+   <img alt="beach" width="100%" class="img-responsive img-circle" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1564043586279&di=b77bb370a29c8d9c6ba9e7a6706cfe04&imgtype=0&src=http%3A%2F%2Fpic.51yuansu.com%2Fpic2%2Fcover%2F00%2F34%2F51%2F58116e6a67ca5_610.jpg">
+     
+ 
+  </div>
+  <div class="col-md-4">
+    <img alt="beach" width="100%" class="img-responsive img-circle" src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2924718302,2450746585&fm=26&gp=0.jpg">
+  </div>
+  <div class="col-md-4">
+   <img alt="beach" width="100%" class="img-responsive img-circle" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1564044829541&di=4e5684a2052c72a037ccc57b5bf8e8a4&imgtype=0&src=http%3A%2F%2Fpic.51yuansu.com%2Fpic2%2Fcover%2F00%2F52%2F87%2F5816d7c4ed50c_610.jpg"> 
+  </div>
+  
+  </div>  
+  <div class="row">
+    <div class="col-md-5">
+    </div>
+    <div class="col-md-3"> 
+      <button class="btn-info" id="1">
+      Save
+    </button>
+    </div>
+    <div class="col-md-4">
+    </div>
+   
+  </div>
+  </div>
+  
+
+
+  
+
+<script type="text/javascript" src="{% static 'draw/vendor/bootstrap/js/index2.js' %}"></script>
+  <script src="{% static 'draw/vendor/bootstrap/js/easydialog.min.js' %}"></script>
+  <script>
+     function sleep(ms){
+  return new Promise((resolve)=>setTimeout(resolve,ms));
+}
+    async  function Save(){
+    var temple=await sleep(3000);
+      easyDialog.open({
+  container : {
+    content : 'Succeed!'
+  },
+  autoClose : 1500
+}); 
+   return temple;
+    }
+        async  function Generate(){
+    var temple=await sleep(4500);
+     easyDialog.open({
+  container : 'imgBox',
+  autoClose : 3000,
+  fixed : false
+});
+   return temple;
+    }
+    $('#1').click(function(){
+       if(confirm("You want to save and generate score?"))
+     {
+       easyDialog.open({
+  container : {
+    content : 'Saving and Generating...'
+  },
+  autoClose : 3000
+});
+       Save();
+       Generate();
+//       easyDialog.open({
+//   container : {
+//     content : 'Succeed!'
+//   },
+//   autoClose : 1000
+// }); 
+//        easyDialog.open({
+//   container : 'imgBox',
+//   autoClose : 2000,
+//   fixed : false
+// });
+       return true;
+     }else{
+	   return false;
+	 }
+
+      
+      
+      
+      
+     
+    });
+    
+  </script>
+
+
+
+
+</body>
+
+</html>
