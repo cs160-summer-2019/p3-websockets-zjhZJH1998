@@ -1,75 +1,143 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html>
-
 <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>P4 Drawing</title>
 
-  <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'draw/vendor/bootstrap/css/bootstrap.min.css' %}">
+    <script type="text/javascript" src="{% static 'draw/vendor/jquery/jquery-3.3.1.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'draw/vendor/paper/paper-full.min.js' %}"></script>
 
-  <title>HTML5 Canvas粒子效果文字动画特效DEMO演示</title>
-
-  <link rel="stylesheet" href="{% static 'draw/vendor/bootstrap/css/normalize.css' %}">
-
-    <link rel="stylesheet"  href="{% static 'draw/vendor/bootstrap/css/style.css' %}" media="screen" type="text/css" />
+    <style type="text/css">
+    </style>
 
 </head>
-
 <body>
-<div style="text-align:center;clear:both;position:absolute;top:0;left:260px">
-<script src="/gg_bd_ad_720x90.js" type="text/javascript"></script>
-<script src="/follow.js" type="text/javascript"></script>
-</div>
-<canvas class="canvas"></canvas>
-
-<div class="help">?</div> 
-
-<div class="ui">
-  <input class="ui-input" type="text" />
-  <span class="ui-return">↵</span>
-</div>
-
-<div class="overlay">
-  <div class="tabs">
-    <div class="tabs-labels"><span class="tabs-label">Commands</span><span class="tabs-label">Info</span><span class="tabs-label">Share</span></div>
-
-    <div class="tabs-panels">
-      <ul class="tabs-panel commands">
-        <li class="commands-item"><span class="commands-item-title">Text</span><span class="commands-item-info" data-demo="Hello :)">Type anything</span><span class="commands-item-action">Demo</span></li>
-        <li class="commands-item"><span class="commands-item-title">Countdown</span><span class="commands-item-info" data-demo="#countdown 10">#countdown<span class="commands-item-mode">number</span></span><span class="commands-item-action">Demo</span></li>
-        <li class="commands-item"><span class="commands-item-title">Time</span><span class="commands-item-info" data-demo="#time">#time</span><span class="commands-item-action">Demo</span></li>
-        <li class="commands-item"><span class="commands-item-title">Rectangle</span><span class="commands-item-info" data-demo="#rectangle 30x15">#rectangle<span class="commands-item-mode">width x height</span></span><span class="commands-item-action">Demo</span></li>
-        <li class="commands-item"><span class="commands-item-title">Circle</span><span class="commands-item-info" data-demo="#circle 25">#circle<span class="commands-item-mode">diameter</span></span><span class="commands-item-action">Demo</span></li>
-
-        <li class="commands-item commands-item--gap"><span class="commands-item-title">Animate</span><span class="commands-item-info" data-demo="The time is|#time|#countdown 3|#icon thumbs-up"><span class="commands-item-mode">command1</span>&nbsp;|<span class="commands-item-mode">command2</span></span><span class="commands-item-action">Demo</span></li>
-      </ul>
-
-      <div class="tabs-panel ui-details">
-        <div class="ui-details-content">
-          <h1>Shape Shifter</h1>
-          <p>
-            An experiment by <a href="//www.kennethcachia.com" target="_blank">Kenneth Cachia<a/>.<br/>
-            <a href="//fortawesome.github.io/Font-Awesome/#icons-new" target="_blank">Font Awesome</a> is being used to render all #icons.
-          </p>
-
-          <br/><p>Visit <a href="http://www.kennethcachia.com/shape-shifter/?a=#icon thumbs-up" target="_blank">Shape Shifter</a> to use icons.</p>
-        </div>
-      </div>
-
-      <div class="tabs-panel ui-share">
-        <div class="ui-share-content">
-          <h1>Sharing</h1>
-          <p>Simply add <em>?a=</em> to the current URL to share any static or animated text. Examples:</p>
-          <p>
-            <a href="http://www.kennethcachia.com/shape-shifter?a=Hello" target="_blank">www.kennethcachia.com/shape-shifter?a=Hello</a><br/>
-            <a href="http://www.kennethcachia.com/shape-shifter?a=Hello|#countdown 3" target="_blank">www.kennethcachia.com/shape-shifter?a=Hello|#countdown 3</a>
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-  <script src="{% static 'draw/vendor/bootstrap/js/index.css' %}"></script>
-
+    <!-- You may change the dimensions of this canvas -->
+    <canvas id="myCanvas" width="750px" height="750px"></canvas>
 </body>
-
+<script>
+  function color16(){//十六进制颜色随机
+			var r = Math.floor(Math.random()*256);
+			var g = Math.floor(Math.random()*256);
+			var b = Math.floor(Math.random()*256);
+			return `rgb(${r},${g},${b})`;
+		}
+    
+    // setting up the canvas and one paper tool
+  
+    var canvas = document.getElementById('myCanvas');
+    var context = canvas.getContext('2d');
+    var startx;
+    var starty;
+ 
+    var yrColor=color16();
+  context.strokeStyle=yrColor;
+  
+//   var yrColor=color16();
+//   context.strokeStyle=yrColor;
+    var paintingStauts = false;
+    paper.setup(canvas);
+    var tool = new paper.Tool();
+        //MouseDown and MouseMove and MouseUp is used to draw the line TiancaishaonianHWK
+        tool.onMouseDown = function(event)
+        {
+          paintingStauts = true;
+          startx = event.point.x
+          starty = event.point.y
+        }
+        tool.onMouseMove = function(event)
+        {
+          if(paintingStauts)
+          {
+            context.beginPath();
+          point = event.point;
+          context.moveTo(startx, starty);
+          context.lineTo(point.x, point.y);
+          context.lineWidth = 1;
+            
+          context.stroke();
+            var abc={
+               color:yrColor,
+              x1:startx,
+              y1:starty,
+              x2:point.x,
+              y2:point.y
+            };
+          var a=JSON.stringify(abc)
+          socket.send(a);
+          
+          startx = point.x
+          starty = point.y
+          }
+         }
+        tool.onMouseUp = function(event)
+        {
+          paintingStauts = false;
+          
+        }
+    // getting the URL (you may want to use for Exercise 3)
+    var url = window.location.href;
+    var socket = new WebSocket(
+        'wss://p3-websockets-zjhzjh1998-841899579420604.codeanyapp.com/ws/draw');
+  socket.onopen=function(){}
+  socket.onmessage = function(Sam) {
+    if(url == 'http://p3-websockets-zjhzjh1998-841899579420604.codeanyapp.com/draw/?type=large'){
+	 var sam=JSON.parse(Sam.data);
+      context.beginPath();
+    context.moveTo(sam.x1, sam.y1);
+          context.lineTo(sam.x2, sam.y2);
+          context.lineWidth = 1;
+      context.strokeStyle=sam.color;
+          context.stroke();
+  }
+    
+};
+// use when sending a message to the server
+// to be broadcasted to all clients, please add a delay
+  
+// use when sending a message to the server
+// to be broadcasted to all clients, please add a delay
+// notify console if socket closes unexpectedly
+socket.onclose = function(e) {
+    console.error('Chat socket closed unexpectedly');
+};
+  
+  
+//   var currhandle=0;//判断操作是否完成
+    if(window.DeviceMotionEvent){
+        var speed = 5;  
+        var x = y = z = lastX = lastY = lastZ = 0;  
+        window.addEventListener('devicemotion', function(){  
+            var acceleration =event.accelerationIncludingGravity;  
+            x = acceleration.x;  
+            y = acceleration.y;  
+            z = acceleration.z;
+            if(Math.abs(x-lastX) > speed || Math.abs(y-lastY) > speed || Math.abs(z-lastZ) > speed) {  
+//             	if(currhandle==0){
+            		//setbegin();//摇一摇事件触发后执行操作
+//             		currhandle=0;
+                context.clearRect(0,0,canvas.width,canvas.height);  
+//             	}	
+            }  
+            lastX = x;  
+            lastY = y;  
+            lastZ = z;
+        }, false);  
+    }else{
+    	alert("您的设备不支持重力感应事件！");
+    }
+  window.addEventListener('deviceorientation',function(event){
+    if(event.gamma>30){
+yrColor=color16();
+      context.strokeStyle=yrColor;
+    }
+  });
+  
+    
+    
+   
+</script>
 </html>
