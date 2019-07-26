@@ -5,7 +5,7 @@
 
 <head>
 <meta charset="UTF-8">
-<title>Mysong</title>
+<title>Mysong Creaetion-Score</title>
 
    <link rel="stylesheet" href="{% static 'draw/vendor/bootstrap/css/style2.css' %}">
    <link rel="stylesheet" type="text/css" href="{% static 'draw/vendor/bootstrap/css/bootstrap.min.css' %}">
@@ -61,6 +61,16 @@
 <script type="text/javascript" src="{% static 'draw/vendor/bootstrap/js/index2.js' %}"></script>
   <script src="{% static 'draw/vendor/bootstrap/js/easydialog.min.js' %}"></script>
   <script>
+      var url = window.location.href;
+    var socket = new WebSocket('wss://p3-websockets-zjhzjh1998-841899579420604.codeanyapp.com/ws/draw');
+     socket.onopen=function(){};
+ 
+
+socket.onclose = function(e) {
+    console.error('Chat socket closed unexpectedly');
+};
+  
+  
      function sleep(ms){
   return new Promise((resolve)=>setTimeout(resolve,ms));
 }
@@ -83,6 +93,18 @@
 });
    return temple;
     }
+    async  function Send(){
+    var temple=await sleep(4500);
+     var abc={
+               senderurl:url
+             
+            };
+          var a=JSON.stringify(abc)
+          
+          socket.send(url);
+      
+   return temple;
+    }
     $('#1').click(function(){
        if(confirm("You want to save and generate score?"))
      {
@@ -94,17 +116,9 @@
 });
        Save();
        Generate();
-//       easyDialog.open({
-//   container : {
-//     content : 'Succeed!'
-//   },
-//   autoClose : 1000
-// }); 
-//        easyDialog.open({
-//   container : 'imgBox',
-//   autoClose : 2000,
-//   fixed : false
-// });
+       Send();
+       
+
        return true;
      }else{
 	   return false;

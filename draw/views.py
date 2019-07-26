@@ -15,5 +15,11 @@ def create(request):
     return render(request, 'draw/create.html', {})
 def play(request):
     return render(request, 'draw/play.html', {})
+def divhtmlt(request):
+    return render(request, 'draw/divhtmlt.html', {})
 
+def divhtmlfour(request):
+    return render(request, 'draw/divhtmlfour.html', {})
+def lyric(request):
+    return render(request, 'draw/lyric.html', {})
 

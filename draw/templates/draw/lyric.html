@@ -5,9 +5,9 @@
 
 <head>
 <meta charset="UTF-8">
-<title>Mysong Creaetion-Play</title>
+<title>Mysong Creaetion-Score</title>
 
-   <link rel="stylesheet" href="{% static 'draw/vendor/bootstrap/css/style2.css' %}">
+<!--    <link rel="stylesheet" href="{% static 'draw/vendor/bootstrap/css/stylebtn.css' %}"> -->
    <link rel="stylesheet" type="text/css" href="{% static 'draw/vendor/bootstrap/css/bootstrap.min.css' %}">
    <script type="text/javascript" src="{% static 'draw/vendor/jquery/jquery-3.3.1.min.js' %}"></script>
   <link rel="stylesheet" href="{% static 'draw/vendor/bootstrap/css/easydialog.css' %}">
@@ -29,37 +29,22 @@
   <div class="row" id="wait"><h1 class="third_neon">Wait&nbsp;for&nbsp;someone's&nbsp;score...</h1>
 
   </div>
-  
    
   
 
-<div class="row">
-  <div class="col-md-4">
-   <img alt="beach" width="100%" class="img-responsive img-circle" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1564043586279&di=b77bb370a29c8d9c6ba9e7a6706cfe04&imgtype=0&src=http%3A%2F%2Fpic.51yuansu.com%2Fpic2%2Fcover%2F00%2F34%2F51%2F58116e6a67ca5_610.jpg">
-     
  
-  </div>
-  <div class="col-md-4">
-    <img alt="beach" width="100%" class="img-responsive img-circle" src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2924718302,2450746585&fm=26&gp=0.jpg">
-  </div>
-  <div class="col-md-4">
-   <img alt="beach" width="100%" class="img-responsive img-circle" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1564044829541&di=4e5684a2052c72a037ccc57b5bf8e8a4&imgtype=0&src=http%3A%2F%2Fpic.51yuansu.com%2Fpic2%2Fcover%2F00%2F52%2F87%2F5816d7c4ed50c_610.jpg"> 
-  </div>
-  
-  </div>  
   <div class="row">
     <div class="col-md-5">
     </div>
     <div class="col-md-3"> 
-      <button class="btn-info" id="1">
-      Save
-    </button>
+     <button type="button" class="btn btn-success" id="1">成功</button>
+
     </div>
     <div class="col-md-4">
     </div>
    
   </div>
-  </div>
+  
   
 
 
@@ -159,11 +144,3 @@
       console.error('Chat socket closed unexpectedly');
       };
   </script>
-
-  <script type="text/javascript" src="{% static 'draw/vendor/bootstrap/js/neon_text.js' %}"></script>
-
-
-
-</body>
-
-</html>
