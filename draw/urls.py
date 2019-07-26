@@ -13,5 +13,6 @@ urlpatterns = [
  url(r'^divhtmlt$', views.divhtmlt, name='divhtmlt'),
   url(r'^divhtmlfour$', views.divhtmlfour, name='divhtmlfour'),
   url(r'^lyric$', views.lyric, name='lyric'),
+  url(r'^sing$', views.sing, name='sing'),
 ]
 

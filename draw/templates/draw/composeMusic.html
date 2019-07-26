@@ -95,11 +95,7 @@ socket.onclose = function(e) {
     }
     async  function Send(){
     var temple=await sleep(4500);
-     var abc={
-               senderurl:url
-             
-            };
-          var a=JSON.stringify(abc)
+    
           
           socket.send(url);
       

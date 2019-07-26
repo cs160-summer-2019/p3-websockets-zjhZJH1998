@@ -5,9 +5,9 @@
 
 <head>
 <meta charset="UTF-8">
-<title>Mysong Creaetion-Lyric</title>
+<title>Mysong Creaetion-Sing</title>
 
-<!--    <link rel="stylesheet" href="{% static 'draw/vendor/bootstrap/css/stylebtn.css' %}"> -->
+   <link rel="stylesheet" href="{% static 'draw/vendor/bootstrap/css/style2.css' %}">
    <link rel="stylesheet" type="text/css" href="{% static 'draw/vendor/bootstrap/css/bootstrap.min.css' %}">
    <script type="text/javascript" src="{% static 'draw/vendor/jquery/jquery-3.3.1.min.js' %}"></script>
   <link rel="stylesheet" href="{% static 'draw/vendor/bootstrap/css/easydialog.css' %}">
@@ -15,58 +15,51 @@
 <link rel="stylesheet" type="text/css" href="{% static 'draw/vendor/bootstrap/css/normalize1.css' %}" />
 <link type="text/css" rel="stylesheet" href="{% static 'draw/vendor/bootstrap/css/style1.css' %}" />
 
- <link rel="stylesheet" type="text/css" href="{% static 'draw/vendor/bootstrap/css/inputstyle.css' %}">
+
 </head>
 
-<body bgcolor="#282E33">
+<body>
 <!--  <div class="controls">
 	<label class="controls__label">little game!</label>
 	<input class="controls__slider" data-slider type="range" min="100" max="500" step="1" value="300" />
 </div> -->
- <div class="row" id="period1" style="display:none;">
-    <img src="{% static 'draw/period1.png' %}" >
+ <div class="row" id="score" style="display:none;">
+    <img src="{% static 'draw/song.png' %}" >
   </div>
-  <div class="row" id="lyric1" style="display:none;">
-    <input type="text" placeholder="enter your lyric..."/>
-  </div> 
-  
-  <div class="row" id="period2" style="display:none;">
-    <img src="{% static 'draw/period2.png' %}" >
-  </div>
-  <div class="row" id="lyric2" style="display:none;">
-    <input type="text" placeholder="enter your lyric..."/>
-  </div> 
-  <div class="row" id="period3" style="display:none;">
-    <img src="{% static 'draw/period3.png' %}" >
-  </div>
-  <div class="row" id="lyric3" style="display:none;">
-    <input type="text" placeholder="enter your lyric..."/>
-  </div> 
-  <div class="row" id="period4" style="display:none;">
-    <img src="{% static 'draw/period4.png' %}" >
-  </div>
-  <div class="row" id="lyric4" style="display:none;">
-    <input type="text" placeholder="enter your lyric..."/>
-  </div> 
-  <div class="row" id="wait"><h1 class="second_neon">Wait&nbsp;for&nbsp;someone's&nbsp;score...</h1>
+  <div class="row" id="wait"><h1 class="third_neon">Wait&nbsp;for&nbsp;someone's&nbsp;score...</h1>
 
   </div>
+  
    
   
 
+<div class="row">
+  <div class="col-md-4">
+   <img alt="beach" width="100%" class="img-responsive img-circle" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1564043586279&di=b77bb370a29c8d9c6ba9e7a6706cfe04&imgtype=0&src=http%3A%2F%2Fpic.51yuansu.com%2Fpic2%2Fcover%2F00%2F34%2F51%2F58116e6a67ca5_610.jpg">
+     
  
-  <div class="row">
+  </div>
+  <div class="col-md-4">
+    <img alt="beach" width="100%" class="img-responsive img-circle" src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2924718302,2450746585&fm=26&gp=0.jpg">
+  </div>
+  <div class="col-md-4">
+   <img alt="beach" width="100%" class="img-responsive img-circle" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1564044829541&di=4e5684a2052c72a037ccc57b5bf8e8a4&imgtype=0&src=http%3A%2F%2Fpic.51yuansu.com%2Fpic2%2Fcover%2F00%2F52%2F87%2F5816d7c4ed50c_610.jpg"> 
+  </div>
+  
+  </div>  
+  <div class="row"  style="display:none;" id="btndiv">
     <div class="col-md-5">
     </div>
-    <div class="col-md-3"> 
-     <button type="button" class="btn btn-success" id="1">Save</button>
-
+    <div class="col-md-3">  
+      <button class="btn-info" id="1">
+      Save
+    </button>
     </div>
     <div class="col-md-4">
     </div>
    
   </div>
-  
+  </div>
   
 
 
@@ -74,12 +67,9 @@
 
 <!-- <script type="text/javascript" src="{% static 'draw/vendor/bootstrap/js/index2.js' %}"></script> -->
   <script src="{% static 'draw/vendor/bootstrap/js/easydialog.min.js' %}"></script>
-  <script src="{% static 'draw/vendor/bootstrap/js/input.js' %}"></script>
-  <script type="text/javascript" src="{% static 'draw/vendor/bootstrap/js/neon_text.js' %}"></script>
-
   <script>
     var a=1;
-//     document.querySelector('body').setAttribute('style', 'background-color:#fff')
+    document.querySelector('body').setAttribute('style', 'background-color:#fff')
     $(document).ready(function(){
 		$('.first_neon').neonText();
 		$('.second_neon').neonText({
@@ -155,8 +145,8 @@
   },
   autoClose : 2000
 });
-      $("#period1,#lyric1,#period2,#lyric2,#period3,#lyric3,#period4,#lyric4").show();
-      
+      $("#score").show();
+//         $("#btndiv").show();
        $("#wait").hide();
     }
   };
@@ -170,3 +160,11 @@
       console.error('Chat socket closed unexpectedly');
       };
   </script>
+
+  <script type="text/javascript" src="{% static 'draw/vendor/bootstrap/js/neon_text.js' %}"></script>
+
+
+
+</body>
+
+</html>

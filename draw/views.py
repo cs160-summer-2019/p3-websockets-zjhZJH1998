@@ -22,4 +22,6 @@ def divhtmlfour(request):
     return render(request, 'draw/divhtmlfour.html', {})
 def lyric(request):
     return render(request, 'draw/lyric.html', {})
+def sing(request):
+    return render(request, 'draw/sing.html', {})
 
