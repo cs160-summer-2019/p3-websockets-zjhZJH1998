@@ -48,7 +48,7 @@
   <div class="row" id="lyric4" style="display:none;">
     <input type="text" placeholder="enter your lyric..."/>
   </div> 
-  <div class="row" id="wait"><h1 class="second_neon">Wait&nbsp;for&nbsp;someone's&nbsp;score...</h1>
+  <div class="row" id="wait"><h1 class="second_neon">Wait&nbsp;for&nbsp;someone's&nbsp;play...</h1>
 
   </div>
    
@@ -124,9 +124,9 @@
     
     $('#1').click(function(){
       if(a==1){
-        alert("Please wait for someone's score first~");
+        alert("Please wait for someone's play first~");
       }else{
-       if(confirm("You want to upload your play?"))
+       if(confirm("You want to upload your lyric?"))
      {
        easyDialog.open({
   container : {
@@ -147,11 +147,11 @@
   socket.onmessage=function(receivedMessage){
 //     console.log(receivedMessag);
     var Rmessage=receivedMessage;
-     if( Rmessage.data== 'http://p3-websockets-zjhzjh1998-841899579420604.codeanyapp.com/draw/composeMusic'){
+     if( Rmessage.data== 'http://p3-websockets-zjhzjh1998-841899579420604.codeanyapp.com/draw/play'){
        a=0;
         easyDialog.open({
   container : {
-    content : "Reveived someone's score!" 
+    content : "Reveived someone's play!" 
   },
   autoClose : 2000
 });

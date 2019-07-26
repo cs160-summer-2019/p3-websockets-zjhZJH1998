@@ -24,4 +24,7 @@ def lyric(request):
     return render(request, 'draw/lyric.html', {})
 def sing(request):
     return render(request, 'draw/sing.html', {})
+  
+def mywork(request):
+    return render(request, 'draw/mywork.html', {})
 

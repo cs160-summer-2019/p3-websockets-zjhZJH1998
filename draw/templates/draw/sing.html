@@ -26,7 +26,7 @@
  <div class="row" id="score" style="display:none;">
     <img src="{% static 'draw/song.png' %}" >
   </div>
-  <div class="row" id="wait"><h1 class="third_neon">Wait&nbsp;for&nbsp;someone's&nbsp;score...</h1>
+  <div class="row" id="wait"><h1 class="third_neon">Wait&nbsp;for&nbsp;someone's&nbsp;lyric...</h1>
 
   </div>
   
@@ -47,7 +47,7 @@
   </div>
   
   </div>  
-  <div class="row"  style="display:none;" id="btndiv">
+  <div class="row"   id="btndiv">
     <div class="col-md-5">
     </div>
     <div class="col-md-3">  
@@ -114,9 +114,9 @@
     
     $('#1').click(function(){
       if(a==1){
-        alert("Please wait for someone's score first~");
+        alert("Please wait for someone's lyric first~");
       }else{
-       if(confirm("You want to upload your play?"))
+       if(confirm("You want to upload your sing?"))
      {
        easyDialog.open({
   container : {
@@ -137,11 +137,11 @@
   socket.onmessage=function(receivedMessage){
 //     console.log(receivedMessag);
     var Rmessage=receivedMessage;
-     if( Rmessage.data== 'http://p3-websockets-zjhzjh1998-841899579420604.codeanyapp.com/draw/composeMusic'){
+     if( Rmessage.data== 'http://p3-websockets-zjhzjh1998-841899579420604.codeanyapp.com/draw/lyric'){
        a=0;
         easyDialog.open({
   container : {
-    content : "Reveived someone's score!" 
+    content : "Reveived someone's lyric!" 
   },
   autoClose : 2000
 });
